@@ -6,7 +6,6 @@ import img1 from '../../public/img1.gif'
 import img2 from '../../public/img2.webp'
 import img3 from '../../public/img3.webp'
 import styles from '@/styles/Home.module.css'
-import sendGrid from 'sendgrid'
 import Carousel from 'react-bootstrap/Carousel';
 
 import { useState } from 'react';
@@ -30,6 +29,13 @@ export default function Home() {
 
     if (res) {
       console.log('success');
+      const resFetch = await fetch('/api/sendgrid', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
     } else {
       console.log('error');
     }
@@ -43,40 +49,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       </Head>
-      <main className='h-screen flex justify-between items-center bg-sky-50'>
-        <div className='h-screen  bg-red-900 ml-10'>
+      <main className='h-screen flex justify-between items-center '>
+        <div className=''>
 
-
-          {/* <Carousel>
-            <Carousel.Item interval={1500}>
               <Image
-                className="d-block w-100"
+                className="w-11/12 ml-10"
                 src={img1}
                 alt="First slide"
               />
-            </Carousel.Item>
-            <Carousel.Item interval={1500}>
-              <Image
-                className="d-block w-100"
-                src={img2}
-                alt="Second slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item interval={1500}>
-              <Image
-                className="d-block w-100"
-                src={img3}
-                alt="Third slide"
-              />
-            </Carousel.Item>
-          </Carousel> */}
-
-
-
+  
 
         </div>
-        <div className='h-screen bg-white flex-none'>
-          <form className='flex flex-col gap-3 p-8 my-52 mx-72' onSubmit={handleSubmit} >
+        <div className='h-screen bg-sky-100 flex-none'>
+          <form className='flex flex-col gap-3 p-8 my-52 mx-64' onSubmit={handleSubmit} >
             <div className='flex justify-center items-center ml-28'>
               <Image src={logo} alt="Picture of the author" width="300" />
             </div>
@@ -150,6 +135,6 @@ export default function Home() {
           </form>
         </div>
       </main>
-    </> 
+    </>
   )
 }
