@@ -2,9 +2,16 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import logo from '../../public/logo.efaf5a74.png'
+import img1 from '../../public/img1.gif'
+import img2 from '../../public/img2.webp'
+import img3 from '../../public/img3.webp'
 import styles from '@/styles/Home.module.css'
+import sendGrid from 'sendgrid'
+import Carousel from 'react-bootstrap/Carousel';
+
 import { useState } from 'react';
-import { HiAtSymbol,HiCalendar,HiLibrary, HiFingerPrint, HiOutlineUser, HiPhone } from 'react-icons/hi';
+import { HiAtSymbol, HiCalendar, HiLibrary, HiFingerPrint, HiOutlineUser, HiPhone } from 'react-icons/hi';
+import { registerUser } from './api/firestore'
 
 
 export default function Home() {
@@ -17,6 +24,17 @@ export default function Home() {
       };
     })
   }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await registerUser(user);
+
+    if (res) {
+      console.log('success');
+    } else {
+      console.log('error');
+    }
+  }
+
   return (
     <>
       <Head>
@@ -25,12 +43,40 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       </Head>
-      <main className='h-screen flex justify-between items-center bg-sky-100'>
-        <div className='h-screen shrink'>
-          {/* <h1>hello daddy</h1> */}
+      <main className='h-screen flex justify-between items-center bg-sky-50'>
+        <div className='h-screen  bg-red-900 ml-10'>
+
+
+          {/* <Carousel>
+            <Carousel.Item interval={1500}>
+              <Image
+                className="d-block w-100"
+                src={img1}
+                alt="First slide"
+              />
+            </Carousel.Item>
+            <Carousel.Item interval={1500}>
+              <Image
+                className="d-block w-100"
+                src={img2}
+                alt="Second slide"
+              />
+            </Carousel.Item>
+            <Carousel.Item interval={1500}>
+              <Image
+                className="d-block w-100"
+                src={img3}
+                alt="Third slide"
+              />
+            </Carousel.Item>
+          </Carousel> */}
+
+
+
+
         </div>
         <div className='h-screen bg-white flex-none'>
-          <form className='flex flex-col gap-3 p-8 my-52 mx-72' >
+          <form className='flex flex-col gap-3 p-8 my-52 mx-72' onSubmit={handleSubmit} >
             <div className='flex justify-center items-center ml-28'>
               <Image src={logo} alt="Picture of the author" width="300" />
             </div>
@@ -97,15 +143,13 @@ export default function Home() {
                 <HiLibrary size={25} />
               </span>
             </div>
-            {/* <div className='sh-btn'> */}
             <button type='submit' className={styles.button}>
               Book Session
             </button>
-            {/* </div> */}
-            
+
           </form>
         </div>
       </main>
-    </>
+    </> 
   )
 }

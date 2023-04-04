@@ -11,16 +11,28 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "bootstrap": "^5.2.3",
+    "dotenv": "^16.0.3",
+    "env": "^0.0.2",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
+    "firebase": "^9.19.1",
+    "fs": "^0.0.1-security",
     "next": "13.2.4",
     "react": "18.2.0",
+    "react-bootstrap": "^2.7.2",
     "react-dom": "18.2.0",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "sendgrid": "^5.2.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.1"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }

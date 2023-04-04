@@ -1,5 +1,5 @@
 .input_group{
-    @apply flex border rounded-xl bg-neutral-100 drop-shadow;
+    @apply flex border rounded-xl bg-neutral-100 drop-shadow-sm;
     position: relative;
     @apply hover:border-sky-950 focus:border-sky-900 border-2;
 }
