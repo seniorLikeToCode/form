@@ -1,0 +1,37 @@
+.input_group{
+    @apply flex border rounded-xl bg-neutral-100 drop-shadow;
+    position: relative;
+    @apply hover:border-sky-950 focus:border-sky-900 border-2;
+}
+
+.input_text{
+    @apply w-full py-4 px-8 border rounded-xl bg-neutral-100;
+    @apply outline-none border-none;
+}
+
+.button {
+    @apply w-full bg-sky-900 mt-5 rounded-xl py-3 text-sky-50 text-lg shadow-2xl;    
+    box-shadow: 0px 5px 19px rgba(0, 0, 0, 0.15) !important;
+}
+
+.button:hover{
+    @apply bg-sky-800 text-white border-none;
+    @apply text-white border ;
+}
+
+.button_custom{
+ @apply w-full border py-3 flex justify-center gap-2 hover:bg-gray-200 ;
+}
+
+.input_text + *{
+    color: #CBD5E1;
+}
+
+.input_text:focus + *{
+    @apply text-primary ;
+}
+
+.input_text:not([]) ~ span:hover *{
+    @apply text-primary;
+    cursor: pointer;
+}
